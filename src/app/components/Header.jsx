@@ -3,6 +3,8 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { translations } from './Translations';
+// Hapus import Image dari 'next/image'
+// Hapus import siteLogoSrc dari '../../../public/images/logo-8.png'; 
 
 const Header = ({ currentLanguage, setLanguage }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -31,20 +33,18 @@ const Header = ({ currentLanguage, setLanguage }) => {
             // Tutup dropdown jika di mobile
             const dropdownContent = document.querySelector('.dropdown-content');
             if (window.innerWidth <= 768 && dropdownContent) {
-                dropdownContent.style.display = 'none';
+                // Biarkan CSS mengontrol display
             }
         }
     }, []);
 
     // Hook untuk setup event listeners (Smooth Scroll)
     useEffect(() => {
-        // Karena Next.js akan merender ulang link, kita harus attach event listener
         const links = document.querySelectorAll('.nav-menu a');
         links.forEach(anchor => {
             anchor.addEventListener('click', handleSmoothScroll);
         });
 
-        // Cleanup listener saat komponen dilepas
         return () => {
             links.forEach(anchor => {
                 anchor.removeEventListener('click', handleSmoothScroll);
@@ -57,8 +57,12 @@ const Header = ({ currentLanguage, setLanguage }) => {
         <header>
             <div className="main-header">
                 <div className="logo">
-                    {/* Aset statis diakses melalui root path /images/ */}
-                    <img src="/images/logo-8.png" alt="Logo Desa Tampaksiring" className="site-logo" />
+                    {/* [DIGANTI] Kembali ke tag <img> biasa dengan path absolut */}
+                    <img 
+                        src="/images/logo-8.png" 
+                        alt="Logo Desa Tampaksiring" 
+                        className="site-logo" 
+                    />
                     <span id="siteTitle">{langData.siteTitle}</span> <span id="siteVillage" className="yellow-text">{langData.header_village}</span>
                 </div>
                 
@@ -85,7 +89,6 @@ const Header = ({ currentLanguage, setLanguage }) => {
                             {langData.destinations} 
                         </button>
                         <div className="dropdown-content">
-                            {/* Link di dalam dropdown menggunakan smooth scroll listener dari useEffect */}
                             <a href="#campuhan" data-lang-key="tubing">{langData.tubing}</a>
                             <a href="#kawi" data-lang-key="kawi">{langData.kawi}</a>
                             <a href="#mengening" data-lang-key="mengening">{langData.mengening}</a>
@@ -100,10 +103,11 @@ const Header = ({ currentLanguage, setLanguage }) => {
                     {/* SELECTOR BAHASA */}
                     <div className="language-selector">
                         <span id="currentLang">
+                             {/* Gambar bendera menggunakan path absolut, ini seharusnya tidak bermasalah */}
                              <img 
-                                src={`/images/flag-${currentLanguage}.png`} 
-                                alt={`${currentLanguage.toUpperCase()} Flag`} 
-                                className="flag-icon"
+                                 src={`/images/flag-${currentLanguage}.png`} 
+                                 alt={`${currentLanguage.toUpperCase()} Flag`} 
+                                 className="flag-icon"
                             /> {currentLanguage.toUpperCase()}
                         </span>
                         <ul className="lang-dropdown">

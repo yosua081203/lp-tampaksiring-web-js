@@ -63,16 +63,25 @@ header {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+/* --- PERBAIKAN KRITIS: Memastikan Logo Muncul --- */
 .logo {
     font-size: 1.8em; 
     font-weight: 700;
     display: flex; 
     align-items: center; 
     gap: 10px; 
+    color: var(--color-white); /* Tambah warna teks logo */
 }
+
+/* Memastikan LOGO Gambar memiliki ukuran */
 .site-logo {
-    height: 45px; 
+    height: 45px; /* Ditinggikan sedikit */
+    width: auto;
+    object-fit: contain;
+    display: inline-block;
 }
+/* ----------------------------------------------- */
+
 .yellow-text {
     color: var(--color-secondary);
 }
@@ -510,7 +519,15 @@ header {
     color: var(--color-primary);
     font-size: 1.3em;
     margin-top: 0;
+    /* --- PERBAIKAN UMKM: Tambah margin bawah agar ada jarak dengan paragraf --- */
+    margin-bottom: 5px; 
 }
+
+.umkm-card p {
+    font-size: 0.9em;
+    color: #666;
+}
+/* ----------------------------------------------- */
 
 /* SOCIAL FEED SECTION (DIHILANGKAN DARI TAMPILAN) */
 .social-feed-section {
@@ -526,6 +543,14 @@ header {
 .gallery-section h2 {
     color: var(--color-primary);
 }
+
+/* --- PERBAIKAN GALERI: Memastikan gambar muncul di tengah slide kosong --- */
+.gallery-item {
+    width: 100%; /* Agar memenuhi slide container */
+    height: 100%; /* Agar memenuhi slide container */
+    object-fit: cover;
+}
+/* ----------------------------------------------- */
 
 .gallery-slide { 
     min-width: calc(100% / 4); 
@@ -651,10 +676,14 @@ header {
     border-radius: 50%;
     margin: 0 8px;
     font-size: 1.5em;
-    color: var(--color-white); /* Ikon putih untuk kontras */
+    color: var(--color-white) !important; /* MEMAKSA IKON PUTIH */
     text-decoration: none;
     transition: transform 0.3s, box-shadow 0.3s;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+/* PERBAIKAN: Memastikan ikon di dalam tag <a> juga berwarna putih */
+.social-icon i { 
+    color: var(--color-white) !important;
 }
 
 .social-icon:hover {
@@ -685,13 +714,16 @@ header {
     margin-bottom: 20px;
 }
 
+/* --- PERBAIKAN SUPPORTED BY --- */
 .logo-grid {
     display: flex; 
-    flex-direction: column; 
+    justify-content: center; /* Tambahkan ini agar logo di tengah */
     align-items: center; 
     gap: 30px; 
     padding-bottom: 10px;
+    flex-wrap: wrap;
 }
+/* -------------------------------- */
 
 .supported-logo {
     max-width: 150px; 
@@ -942,6 +974,17 @@ footer .tagline {
         top: 100%;
     }
 
+    /* --- PERBAIKAN: Tombol Hamburger --- */
+    .hamburger {
+        display: block; /* Menampilkan tombol hamburger di mobile */
+        background: none;
+        border: none;
+        color: var(--color-white);
+        font-size: 1.8em;
+        cursor: pointer;
+    }
+    /* ---------------------------------- */
+
     .nav-menu {
         display: none;
         flex-direction: column;
@@ -954,9 +997,6 @@ footer .tagline {
     }
     .nav-menu.show {
         display: flex;
-    }
-    .hamburger {
-        display: block;
     }
     
     /* Layout konten lainnya */
@@ -998,10 +1038,12 @@ footer .tagline {
     }
     .logo-grid {
         gap: 20px;
-        max-width: 200px;
+        max-width: 100%;
+        flex-direction: row; /* Mengatur kembali ke row agar sejajar di mobile */
+        justify-content: center;
     }
     .supported-logo {
-        max-width: 150px;
+        max-width: 100px;
     }
 }
 @media (max-width: 500px) {
@@ -1025,14 +1067,13 @@ footer .tagline {
 
     /* Supported By Mobile */
     .supported-by-container h4 {
-        font-size: 1.8em;
-        margin-bottom: 30px;
+        font-size: 1.5em; /* Dikecilkan sedikit */
+        margin-bottom: 20px;
     }
     .logo-grid {
-        gap: 25px;
-        max-width: 200px;
+        gap: 15px;
     }
     .supported-logo {
-        max-width: 120px;
+        max-width: 80px;
     }
 }
