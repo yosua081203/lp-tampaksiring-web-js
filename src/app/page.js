@@ -355,7 +355,7 @@ export default function Home() {
 
                 {/* Footer Bar Bawah */}
                 <div className="footer-bottom">
-                    <p>© 2025 TAMPAKSIRING. ALL RIGHTS RESERVED.</p>
+                    <p>© 2025 KKNT INSTIKI DESA TAMPAKSIRING. ALL RIGHTS RESERVED.</p>
                 </div>
             </footer>
             {/* END FOOTER PERBAIKAN */}
