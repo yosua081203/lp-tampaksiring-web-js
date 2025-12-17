@@ -340,7 +340,6 @@ export default function Home() {
                         <div className="social-links-footer">
                             <a href="https://www.instagram.com/desa_tampaksiring?igsh=MXhrcngwemY3azMxcw==" target="_blank" className="social-icon instagram"><i className="fab fa-instagram"></i></a>
                             <a href="https://www.tiktok.com/@desatampaksiring?_r=1&_t=ZS-91xK35TD81l" target="_blank" className="social-icon tiktok"><i className="fab fa-tiktok"></i></a>
-                            <a href="https://www.facebook.com/tampaksiring" target="_blank" className="social-icon facebook"><i className="fab fa-facebook-f"></i></a>
                             <a href="https://www.youtube.com/@DesaTampaksiringBali" target="_blank" className="social-icon youtube"><i className="fab fa-youtube"></i></a>
                         </div>
                     </div>
